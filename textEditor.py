@@ -1,6 +1,15 @@
+"""
+Simple text editor using Python and Tkinter.
+
+Based on a tutorial : https://www.youtube.com/watch?v=xqDonHEYPgA
+Modified/extended by Nicholas Schwartz
+"""
+
 from tkinter import *
 from tkinter.filedialog import *
+from tkinter.font import Font
 from tkinter.messagebox import *
+from tkinter import simpledialog
 import os 
 
 filename = None
@@ -36,6 +45,7 @@ def saveFileAs():
         showerror(title="Error", message="Unable to save file")
 
 def openFile():
+    global filename
     f = askopenfile(mode='r')
     t = f.read()
     text.delete(0.0, END)
@@ -50,15 +60,19 @@ def clearFile():
     text.delete(0.0, END)
 
 def editTextSize():
-    text = Text(root, width = 400, height = 400)
+    size = simpledialog.askinteger("Text Size", "Chose your desired text size")
+    user_font.configure(size=size)
     text.pack()
+
 
 root = Tk()
 root.title(f"Nick's Text Editor : Untitled")
 root.minsize(width = 200, height = 200)
 root.maxsize(width = 500, height = 500)
 
-text = Text(root, width = 200, height = 200)
+user_font = Font(family="Arial", size=12)
+text = Text(root, width = 200, height = 200, font=user_font)
+
 text.pack()
 
 menuBar = Menu(root)
@@ -75,4 +89,3 @@ menuBar.add_cascade(label = "File", menu = filemenu)
 
 root.config(menu = menuBar)
 root.mainloop()
-
