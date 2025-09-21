@@ -7,6 +7,6 @@ Includes
 * Trash/Restart option
 * Updated display of file name as window title
 
-Credits
+Credits:
 Based on Made With Data's video : https://www.youtube.com/watch?v=xqDonHEYPgA
 with modifications/additions by Nicholas Schwartz
